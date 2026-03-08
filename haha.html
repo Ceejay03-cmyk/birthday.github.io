@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday!!!</title>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+font-family:Arial, sans-serif;
+text-align:center;
+color:white;
+}
+
+.container{
+width:90%;
+max-width:400px;
+}
+
+h2{
+font-size:22px;
+}
+
+.cake{
+position:relative;
+width:60vw;
+max-width:200px;
+height:220px;
+margin:20px auto;
+}
+
+.layer{
+width:100%;
+height:40px;
+border-radius:10px;
+position:absolute;
+left:0;
+opacity:0;
+transform:translateY(-200px);
+transition:0.8s;
+}
+
+.layer1{background:#ff7aa2; bottom:0;}
+.layer2{background:#ff9ec0; bottom:40px;}
+.layer3{background:#ffc1d6; bottom:80px;}
+
+.candle{
+width:10px;
+height:30px;
+background:white;
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+bottom:120px;
+opacity:0;
+}
+
+.flame{
+width:12px;
+height:12px;
+background:orange;
+border-radius:50%;
+position:absolute;
+top:-10px;
+left:-1px;
+animation:flicker 0.3s infinite alternate;
+}
+
+@keyframes flicker{
+from{transform:scale(1);}
+to{transform:scale(1.2);}
+}
+
+button{
+width:80%;
+max-width:250px;
+padding:15px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4b7d;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+.message{
+margin-top:20px;
+font-size:20px;
+display:none;
+}
+
+@media (max-width:480px){
+h2{
+font-size:18px;
+}
+
+.message{
+font-size:18px;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Tap to Build Your Birthday Cake 🎂</h2>
+
+<div class="cake">
+
+<div class="layer layer1"></div>
+<div class="layer layer2"></div>
+<div class="layer layer3"></div>
+
+<div class="candle">
+<div class="flame"></div>
+</div>
+
+</div>
+
+<button onclick="addLayer()">Add Cake Layer</button>
+
+<div class="message" id="msg">
+🎉 Happy Birthday Jam! 🎉 <br>
+You make my life sweeter every day. ❤️
+</div>
+
+</div>
+
+<script>
+
+let step = 0;
+
+function addLayer(){
+
+const layers = document.querySelectorAll(".layer");
+const candle = document.querySelector(".candle");
+
+if(step < layers.length){
+layers[step].style.opacity="1";
+layers[step].style.transform="translateY(0)";
+step++;
+}
+else if(step === layers.length){
+candle.style.opacity="1";
+step++;
+}
+else{
+document.getElementById("msg").style.display="block";
+}
+
+}
+
+</script>
+
+</body>
+</html>
